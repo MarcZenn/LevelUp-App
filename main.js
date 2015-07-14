@@ -152,7 +152,7 @@ var totalPropsKeeperResult = totalPropsKeeper()
 // this block defines the behavior for the props button within each submitted Achievement. it increments the total number of props value by one.
 
 
-$(document).one("click", ".propsButtonContainer", function() {
+$(document).on("click", ".propsButtonContainer", function() {
 
 	
 	$(this).empty()
@@ -183,7 +183,7 @@ $(document).one("click", ".propsButtonContainer", function() {
 
 
 
-$(document).one("click", ".madPropsButtonContainer", function() {
+$(document).on("click", ".madPropsButtonContainer", function() {
 
 	
 	$(this).empty()

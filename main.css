@@ -111,7 +111,7 @@ body {
 }
 
 .propsCount {
-	color:red;
+	color: #5DFFA8;
 
 }
 
@@ -127,7 +127,7 @@ body {
 	border-style: solid;
 	border-color: lightgrey;
 	word-wrap: break-word;
-	overflow: hidden;
+	overflow: scroll;
 	margin-left: 10px;
 
 }
