@@ -14,7 +14,17 @@ $("body").on("click", ".addMediaButton", function(){
 	
 })
 
-var levelsObject = {}
+
+var levelsObject = { 
+	four: "Scrub",
+	100: "Scallywag",
+	// 200: Beginner,
+	// 300: Rooki,
+	// 400: Novice,
+}
+
+
+
 
 var personArray = []
 
@@ -22,7 +32,7 @@ var entriesArray = []
 
 var personObject = function(name, totalProps, levelRating) {
 	this.name = name;
-	this.totalProps = totalProps;
+	this.totalProps = 0;
 	this.levelRating = levelRating;
 
 }
@@ -92,16 +102,51 @@ $("body").on("click", ".submitButton", function() {
 
 
 
-// this block defines the behavior for the props button within each submitted Achievement. 
+
+entriesArray.forEach(function(element) {
+		$(".newsFeed").prepend(element.html)
+})
+
+
+// personObject.prototype.default = function() {
+var name = "name"
+var totalProps = 0
+// var levelRating = levelsObject.0
+
+// console.log(levelRating.0)
+
+var defaultPerson = new personObject(name, totalProps)
+	
+	
+	// console.log(defaultPerson)
+
+
+
+
+
+// this block defines the behavior for the props button within each submitted Achievement. it increments the total number of props value by one.
+
 
 $(document).on("click", ".propsButtonContainer", function() {
 
 	
 	$(this).empty()
+	$(this).prevAll().remove()
 
 	var gaveProps = $("<p class='propsButtonText'>That's Watsup!</p>")
 	
 	$(this).append(gaveProps)
+	
+	defaultPerson.totalProps++
+
+	var appendedCount = $("<h1 class='propsCount' style='font-size: 100px'>" + defaultPerson.totalProps.toString() + "</h1>")
+
+	console.log(defaultPerson)
+	$(".propsCount").remove()
+
+	$(".totalPropsContainer").append(appendedCount)
+
+
 
 
 })
