@@ -74,7 +74,7 @@ $("body").on("click", ".submitButton", function() {
 
 	var submittedInfo = new FormsObject(tempLocation, tempDetails)
 
-	submittedInfo.html = $("<div class='submittedAchievementBox'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='propsButtonContainer'><p class='propsButtonText'>Give 'em Props!</p><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div><div class='col-md-12'><p>" + tempDetails + "</p></div></div>")
+	submittedInfo.html = $("<div class='submittedAchievementBox'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><p>Mad Props</p><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><p class='propsButtonText'>Give 'em Props!</p><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div></div>")
 
 	entriesArray.push(submittedInfo)
 
@@ -94,18 +94,14 @@ $("body").on("click", ".submitButton", function() {
 
 // this block defines the behavior for the props button within each submitted Achievement. 
 
-$("body").on("click", ".propsButton", function() {
+$(document).on("click", ".propsButtonContainer", function() {
 
 	
-	$(".propsButtonContainer").empty()
+	$(this).empty()
 
 	var gaveProps = $("<p class='propsButtonText'>That's Watsup!</p>")
 	
 	$(this).append(gaveProps)
-
-
-	
-
 
 
 })
