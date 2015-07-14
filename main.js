@@ -89,18 +89,6 @@ $("body").on("click", ".submitButton", function() {
 	entriesArray.push(submittedInfo)
 
 
-	// include if statement below plust another variable with different styled class in order to alternate color of postings on page. 
-	
-	// entriesArray.forEach(function(element) {
-	// $(".newsFeed").prepend(element.html)
-	
-	// })
-	
-	// $(".formContainer").hide();
-	// $(".buttonDiv").show();
-
-
-
 	var alternateColor = function() {
 		entriesArray.forEach(function(element) {
 			if (entriesArray.indexOf(element) % 2 === 0 ) {
@@ -119,13 +107,6 @@ $("body").on("click", ".submitButton", function() {
 	$(".buttonDiv").show();
 
 })
-
-
-
-
-
-
-
 
 
 
@@ -149,7 +130,7 @@ var totalPropsKeeperResult = totalPropsKeeper()
 
 
 
-// this block defines the behavior for the props button within each submitted Achievement. it increments the total number of props value by one.
+// the two code blocks below define the behavior for the give props buttons within each submitted Achievement. it increments the total number of props value by one or 3.
 
 
 $(document).on("click", ".propsButtonContainer", function() {
