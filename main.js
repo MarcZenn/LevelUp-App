@@ -91,23 +91,32 @@ $("body").on("click", ".submitButton", function() {
 
 	// include if statement below plust another variable with different styled class in order to alternate color of postings on page. 
 	
-	entriesArray.forEach(function(element) {
-	$(".newsFeed").prepend(element.html)
+	// entriesArray.forEach(function(element) {
+	// $(".newsFeed").prepend(element.html)
 	
-	})
+	// })
 	
+	// $(".formContainer").hide();
+	// $(".buttonDiv").show();
+
+
+
+	var alternateColor = function() {
+		entriesArray.forEach(function(element) {
+			if (entriesArray.indexOf(element) % 2 === 0 ) {
+				$(".newsFeed").prepend(element.html)
+			}
+			else {
+				$(".newsFeed").prepend(element.whitehtml)
+			}
+		})	
+
+		}
+
+	alternateColor()
+
 	$(".formContainer").hide();
 	$(".buttonDiv").show();
-
-
-
-
-
-
-
-
-
-
 
 })
 
@@ -115,25 +124,10 @@ $("body").on("click", ".submitButton", function() {
 
 
 
-// entriesArray.forEach(function(element) {
-// 	if (element.indexOf() % 2 === 0 ) {
-// 		$(".newsFeed").prepend(element.html)
-// 	}
-// 	else 
-// 		$(".newsFeed").prepend(element.html)
-// 	})
-	
-
-// 	$(".formContainer").hide();
-// 	$(".buttonDiv").show();
-
-// })
 
 
 
-// entriesArray.forEach(function(element) {
-// 		$(".newsFeed").prepend(element.html)
-// })
+
 
 
 // Global variabl to pass defintions to personObject paramaters. I couldn't get the Total Props Given ticker to work without these global variables. :/
