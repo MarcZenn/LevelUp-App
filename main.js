@@ -16,11 +16,11 @@ $("body").on("click", ".addMediaButton", function(){
 
 
 var levelsObject = { 
-	four: "Scrub",
-	100: "Scallywag",
-	// 200: Beginner,
-	// 300: Rooki,
-	// 400: Novice,
+	Scrub: 0,
+	Scallywag: 100,
+	Beginner: 200,
+	Rookie: 300,
+	Novice: 400,
 }
 
 
@@ -84,72 +84,151 @@ $("body").on("click", ".submitButton", function() {
 
 	var submittedInfo = new FormsObject(tempLocation, tempDetails)
 
-	submittedInfo.html = $("<div class='submittedAchievementBox'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><p>Mad Props</p><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><p class='propsButtonText'>Give 'em Props!</p><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div></div>")
-
+	submittedInfo.html = $("<div class='submittedAchievementBox'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><p class='propsButtonText'><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div></div>")
+	submittedInfo.whitehtml = $("<div class='submittedAchievementBox2'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><p class='propsButtonText'><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div></div>")
 	entriesArray.push(submittedInfo)
 
-// include if statement below plust another variable with different styled class in order to alternate color of postings on page. 
+
+	// include if statement below plust another variable with different styled class in order to alternate color of postings on page. 
 	
 	entriesArray.forEach(function(element) {
-		$(".newsFeed").prepend(element.html)
+	$(".newsFeed").prepend(element.html)
+	
 	})
 	
-
 	$(".formContainer").hide();
 	$(".buttonDiv").show();
 
+
+
+
+
+
+
+
+
+
+
 })
 
 
 
 
-entriesArray.forEach(function(element) {
-		$(".newsFeed").prepend(element.html)
-})
 
-
-// personObject.prototype.default = function() {
-var name = "name"
-var totalProps = 0
-// var levelRating = levelsObject.0
-
-// console.log(levelRating.0)
-
-var defaultPerson = new personObject(name, totalProps)
+// entriesArray.forEach(function(element) {
+// 	if (element.indexOf() % 2 === 0 ) {
+// 		$(".newsFeed").prepend(element.html)
+// 	}
+// 	else 
+// 		$(".newsFeed").prepend(element.html)
+// 	})
 	
+
+// 	$(".formContainer").hide();
+// 	$(".buttonDiv").show();
+
+// })
+
+
+
+// entriesArray.forEach(function(element) {
+// 		$(".newsFeed").prepend(element.html)
+// })
+
+
+// Global variabl to pass defintions to personObject paramaters. I couldn't get the Total Props Given ticker to work without these global variables. :/
+var totalPropsKeeper = function() {
+	var name = "name"
+	var totalProps = 0
+	// var levelRating = levelsObject.0
+
+	// console.log(levelRating.0)
+
+	var defaultPerson = new personObject(name, totalProps)
 	
-	// console.log(defaultPerson)
+
+	return defaultPerson.totalProps
+}
 
 
+var totalPropsKeeperResult = totalPropsKeeper()
 
 
 
 // this block defines the behavior for the props button within each submitted Achievement. it increments the total number of props value by one.
 
 
-$(document).on("click", ".propsButtonContainer", function() {
+$(document).one("click", ".propsButtonContainer", function() {
 
 	
 	$(this).empty()
-	$(this).prevAll().remove()
+	$(this).prev().remove()
 
 	var gaveProps = $("<p class='propsButtonText'>That's Watsup!</p>")
 	
 	$(this).append(gaveProps)
 	
-	defaultPerson.totalProps++
+	var propsIncrementer = function() {
 
-	var appendedCount = $("<h1 class='propsCount' style='font-size: 100px'>" + defaultPerson.totalProps.toString() + "</h1>")
+		// defaultPerson.totalProps++
+		totalPropsKeeperResult++
 
-	console.log(defaultPerson)
+		// var appendedCount = $("<h1 class='propsCount' style='font-size: 100px'>" + defaultPerson.totalProps.toString() + "</h1>")
+		var appendedCount = $("<h1 class='propsCount' style='font-size: 100px'>" + totalPropsKeeperResult + "</h1>")
+		return appendedCount
+
+	}
+
 	$(".propsCount").remove()
 
-	$(".totalPropsContainer").append(appendedCount)
+	$(".totalPropsContainer").append(propsIncrementer)
+
+
+
+})
+
+
+
+$(document).one("click", ".madPropsButtonContainer", function() {
+
+	
+	$(this).empty()
+	$(this).next().remove()
+
+	var gaveMadProps = $("<p class='propsButtonText'>That's Watsup!</p>")
+	
+	$(this).append(gaveMadProps)
+
+	var madPropsIncrementer = function() {
+
+	// block below defines functionality for incrementing the total # of props given ticker on page by 3. 
+	var madProps = totalPropsKeeperResult+=3
+
+	console.log(madProps)
+	// var appendedCount = $("<h1 class='propsCount' style='font-size: 100px'>" + defaultPerson.totalProps.toString() + "</h1>")
+	var appendedCount2 = $("<h1 class='propsCount' style='font-size: 100px'>" + madProps + "</h1>")
+		return appendedCount2
+
+	}
+	
+	$(".propsCount").remove()
+
+	$(".totalPropsContainer").append(madPropsIncrementer)
 
 
 
 
 })
+
+
+
+
+
+
+
+
+
+
 
 
 
