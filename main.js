@@ -76,7 +76,7 @@ var FormsObject = function(location, description, uploadFile){
 
 
 // The function below defines click event functionality when submitting the form. 
-// It appends most recent to top or just prepends. 
+// It appends most recent to top (prepends). 
 
 $("body").on("click", ".submitButton", function() {
 	event.preventDefault()
@@ -92,7 +92,7 @@ $("body").on("click", ".submitButton", function() {
 	entriesArray.push(submittedInfo)
 
 	 
-	var alternateColor = function() { // the alternateColor function below simply alternates the appended div in order to alternate background colors.
+	var alternateColor = function() { // this alternateColor function below simply alternates the appended div in order to alternate background colors.
 		entriesArray.forEach(function(element) {
 			if (entriesArray.indexOf(element) % 2 === 0 ) {
 				$(".newsFeed").prepend(element.html)
@@ -114,8 +114,8 @@ $("body").on("click", ".submitButton", function() {
 
 
 
-// Global variabl to pass defintions to personObject paramaters. I couldn't get the Total Props Given 
-// ticker to work without these global variables. 
+// Global function to pass defintions to personObject paramaters. I couldn't get the Total Props Given 
+// ticker to work without these global variables in place. 
 
 var totalPropsKeeper = function() {
 	var name = "name"
@@ -134,8 +134,8 @@ var totalPropsKeeperResult = totalPropsKeeper() // holds the value of totalProps
 
 
 
-// The two code blocks below define the behavior for the give props buttons within each submitted Achievement. 
-// It increments the total number of props value by one or 3.
+// The code block below define the behavior for the give props button within each submitted Achievement. 
+// It increments the total number of props value by 1.
 
 $(document).on("click", ".propsButtonContainer", function() {
 
@@ -149,10 +149,8 @@ $(document).on("click", ".propsButtonContainer", function() {
 	
 	var propsIncrementer = function() {
 
-		// defaultPerson.totalProps++
 		totalPropsKeeperResult++
 
-		// var appendedCount = $("<h1 class='propsCount' style='font-size: 100px'>" + defaultPerson.totalProps.toString() + "</h1>")
 		var appendedCount = $("<h1 class='propsCount' style='font-size: 100px'>" + totalPropsKeeperResult + "</h1>")
 		return appendedCount
 
@@ -189,12 +187,8 @@ $(document).on("click", ".propsButtonContainer", function() {
 })
 
 	
-
-
-
-
-
-
+// The code block below define the behavior for the give props button within each submitted Achievement. 
+// It increments the total number of props value by 3.
 
 $(document).on("click", ".madPropsButtonContainer", function() {
 
@@ -208,12 +202,11 @@ $(document).on("click", ".madPropsButtonContainer", function() {
 
 	var madPropsIncrementer = function() {
 
-	// block below defines functionality for incrementing the total # of props given ticker on page by 3. 
-	var madProps = totalPropsKeeperResult+=3
+		var madProps = totalPropsKeeperResult+=3
 
 	
-	// var appendedCount = $("<h1 class='propsCount' style='font-size: 100px'>" + defaultPerson.totalProps.toString() + "</h1>")
-	var appendedCount2 = $("<h1 class='propsCount' style='font-size: 100px'>" + madProps + "</h1>")
+		
+		var appendedCount2 = $("<h1 class='propsCount' style='font-size: 100px'>" + madProps + "</h1>")
 		return appendedCount2
 
 	}
