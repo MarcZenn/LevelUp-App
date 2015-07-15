@@ -43,7 +43,8 @@ body {
 }
 
 .profileImageDiv {
-	background-color: transparent;
+	background-color: lightgrey;
+	opacity: 20%;
 	height: 240px;
 	border-radius: 5px;
 	text-align: center;

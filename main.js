@@ -1,7 +1,6 @@
 $(document).on("ready", function() {
 
-// the three jQuery functions below simply hide the submission form upon dom ready.
-
+// The three jQuery functions above simply hide the submission form upon dom ready.
 $(".formContainer").hide();
 
 $("body").on("click", ".addMediaButton", function(){
@@ -15,12 +14,16 @@ $("body").on("click", ".addMediaButton", function(){
 })
 
 
+// Arrays for data structures. 
+
 var levelsObject = { 
 	Scrub: 0,
-	Scallywag: 100,
-	Beginner: 200,
-	Rookie: 300,
-	Novice: 400,
+	Scallywag: 5,
+	Beginner: 10,
+	Miley Cyrus: 25;
+	Rookie: 15,
+	Novice: 20,
+
 }
 
 
@@ -72,14 +75,14 @@ var FormsObject = function(location, description, uploadFile){
 
 
 
-// function below defines click event functionality when submitting the form. it appends most recent to top or just prepends. 
+// The function below defines click event functionality when submitting the form. 
+// It appends most recent to top or just prepends. 
 
 $("body").on("click", ".submitButton", function() {
 	event.preventDefault()
 	var tempLocation = $(".formLocation").val()
 	var tempDetails = $(".formDescription").val()
 	// var temppUploadFile = $(".uploadFile").val()
-	// var rating = $(".star").attr("value"))
 
 
 	var submittedInfo = new FormsObject(tempLocation, tempDetails)
@@ -88,8 +91,8 @@ $("body").on("click", ".submitButton", function() {
 	submittedInfo.whitehtml = $("<div class='submittedAchievementBox2'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><p class='propsButtonText'><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div></div>")
 	entriesArray.push(submittedInfo)
 
-
-	var alternateColor = function() {
+	 
+	var alternateColor = function() { // the alternateColor function below simply alternates the appended div in order to alternate background colors.
 		entriesArray.forEach(function(element) {
 			if (entriesArray.indexOf(element) % 2 === 0 ) {
 				$(".newsFeed").prepend(element.html)
@@ -111,13 +114,13 @@ $("body").on("click", ".submitButton", function() {
 
 
 
-// Global variabl to pass defintions to personObject paramaters. I couldn't get the Total Props Given ticker to work without these global variables. :/
+// Global variabl to pass defintions to personObject paramaters. I couldn't get the Total Props Given 
+// ticker to work without these global variables. 
+
 var totalPropsKeeper = function() {
 	var name = "name"
 	var totalProps = 0
 	// var levelRating = levelsObject.0
-
-	// console.log(levelRating.0)
 
 	var defaultPerson = new personObject(name, totalProps)
 	
@@ -126,12 +129,13 @@ var totalPropsKeeper = function() {
 }
 
 
-var totalPropsKeeperResult = totalPropsKeeper()
+var totalPropsKeeperResult = totalPropsKeeper() // holds the value of totalPropsKeeper function above in variable. 
 
 
 
-// the two code blocks below define the behavior for the give props buttons within each submitted Achievement. it increments the total number of props value by one or 3.
 
+// The two code blocks below define the behavior for the give props buttons within each submitted Achievement. 
+// It increments the total number of props value by one or 3.
 
 $(document).on("click", ".propsButtonContainer", function() {
 
@@ -159,8 +163,36 @@ $(document).on("click", ".propsButtonContainer", function() {
 	$(".totalPropsContainer").append(propsIncrementer)
 
 
+})
+
+
+// this function acts only on props button click. when clicked checks current value of total props 
+// given and sees if the level rating needs to be changed. 
+
+$(document).on("click", ".propsButtonContainer", function() {
+	
+	var levelChanger = function() {
+		for (var prop in levelsObject) {
+			if ( levelsObject.hasOwnProperty(prop) ) {
+				var value = levelsObject[prop]
+			} 
+			if (value === totalPropsKeeperResult ) {
+				$(".levelTitle").remove()
+				$(".currentLevel").append(prop)
+			}
+				
+		}
+	}
+
+		levelChanger()
 
 })
+
+	
+
+
+
+
 
 
 
@@ -179,7 +211,7 @@ $(document).on("click", ".madPropsButtonContainer", function() {
 	// block below defines functionality for incrementing the total # of props given ticker on page by 3. 
 	var madProps = totalPropsKeeperResult+=3
 
-	console.log(madProps)
+	
 	// var appendedCount = $("<h1 class='propsCount' style='font-size: 100px'>" + defaultPerson.totalProps.toString() + "</h1>")
 	var appendedCount2 = $("<h1 class='propsCount' style='font-size: 100px'>" + madProps + "</h1>")
 		return appendedCount2
