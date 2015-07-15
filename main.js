@@ -17,10 +17,12 @@ $("body").on("click", ".addMediaButton", function(){
 // Arrays for data structures. 
 
 var levelsObject = { // ideally I'd like to have one value per level rating(key) but since level change is strictly set to === I cannot work with ranges in levelChanger function below
-	Scallywag: 5,
-	Bieber: 15,
-	Rookie: 20,
-	Novice: 25,
+	Whippersnapper: 10,
+	Scalawag: 15,
+	Greenhorn: 20,
+	Rookie: 25,
+	Apprentice: 30,
+	Novice: 35,
 
 
 }
@@ -81,13 +83,17 @@ $("body").on("click", ".submitButton", function() {
 	event.preventDefault()
 	var tempLocation = $(".formLocation").val()
 	var tempDetails = $(".formDescription").val()
-	// var temppUploadFile = $(".uploadFile").val()
+	var temppUploadFile = $(".uploadFile").val()
 
 
 	var submittedInfo = new FormsObject(tempLocation, tempDetails)
 
-	submittedInfo.html = $("<div class='submittedAchievementBox'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><p class='propsButtonText'><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div></div>")
-	submittedInfo.whitehtml = $("<div class='submittedAchievementBox2'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><p class='propsButtonText'><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div></div>")
+	submittedInfo.html = $("<div class='submittedAchievementBox'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div><div class='col-md-12 uploadValue'><div>" + temppUploadFile + "</div></div><div class='col-md-12'><p>" + tempDetails + "</p></div></div>")	
+	submittedInfo.whitehtml = $("<div class='submittedAchievementBoxWhite'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div><div class='col-md-12 uploadValue'><div>" + temppUploadFile + "</div></div><div class='col-md-12'><p>" + tempDetails + "</p></div></div>")	
+	
+	// submittedInfo.html = $("<div class='submittedAchievementBox'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><p class='propsButtonText'><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div></div>")
+	// submittedInfo.whitehtml = $("<div class='submittedAchievementBoxWhite'><div class='col-md-2'><p>" + tempLocation + "</p></div><div class='madPropsButtonContainer'><input type='image' class='madPropsButton' src='http://photo.solidstockartcontent.com/stock-illustration-fist-bump-or-punching-on-white-background-113081.png' alt='Submit Form' /></div><div class='propsButtonContainer'><p class='propsButtonText'><input type='image' class='propsButton' src='http://previews.123rf.com/images/tribalium123/tribalium1231303/tribalium123130300129/18787559-Human-okay-hand-button-icon-OK-hand-symbol--Stock-Vector-ok-best-quality.jpg' alt='Submit Form' /></div></div>")
+
 	entriesArray.push(submittedInfo)
 
 	 
@@ -166,25 +172,25 @@ $(document).on("click", ".propsButtonContainer", function() {
 // this function acts only on props button click. when clicked checks current value of total props 
 // given and sees if the level rating needs to be changed. 
 
-// $(document).on("click", ".propsButtonContainer", function() {
+$(document).on("click", ".propsButtonContainer", function() {
 	
-// 	var levelChanger = function() {
-// 		for (var prop in levelsObject) {
-// 			if ( levelsObject.hasOwnProperty(prop) ) {
-// 				var value = levelsObject[prop]
-// 			} 
-// 			if (value === totalPropsKeeperResult) {
-// 				var appenditure = $("<p class='levelTitle'>" + prop + "</p>")
-// 				$(".levelTitle").remove()
-// 				$(".currentLevel").append(appenditure)
-// 			}
+	var levelChanger = function() {
+		for (var prop in levelsObject) {
+			if ( levelsObject.hasOwnProperty(prop) ) {
+				var value = levelsObject[prop]
+			} 
+			if (value === totalPropsKeeperResult) {
+				var appenditure = $("<p class='levelTitle'>" + prop + "</p>")
+				$(".levelTitle").remove()
+				$(".currentLevel").append(appenditure)
+			}
 				
-// 		}
-// 	}
+		}
+	}
 
-// 		levelChanger() // when I console.log this function it says it's undefined but why!!
+		levelChanger() // when I console.log this function it says it's undefined but why!!
 
-// })
+})
 
 		
 	

@@ -135,21 +135,29 @@ body {
 .submittedAchievementBox { 
 	position: relative;
 	width: 100%;
-	height: 25%;
+	height: 40%;
 	background-color: lightgrey;
 	padding: 10px;
 	font-family: Arial;
 	word-wrap: break-word;
+	overflow: auto;
 }
 
-.submittedAchievementBox2 { 
+.submittedAchievementBoxWhite { 
 	position: relative;
 	width: 100%;
-	height: 25%;
+	height: 40%;
 	background-color: white;
 	padding: 10px;
 	font-family: Arial;
 	word-wrap: break-word;
+	overflow: auto;
+}
+
+.uploadValueDiv img {
+	padding: none;
+	width: 175px;
+	height: 100px;
 }
 
 .buttonDiv {
