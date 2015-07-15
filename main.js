@@ -24,7 +24,6 @@ var levelsObject = { // ideally I'd like to have one value per level rating(key)
 	Apprentice: 30,
 	Novice: 35,
 
-
 }
 
 
