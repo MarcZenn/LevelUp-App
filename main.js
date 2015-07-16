@@ -21,15 +21,19 @@ $("body").on("click", ".asText", function() {
 	$(".profileImageDiv").append(nameForm)
 })
 
+
+
 // Arrays for data structures. 
 
 var levelsObject = { // ideally I'd like to have one value per level rating(key) but since level change is strictly set to === I cannot work with ranges in levelChanger function below
-	Youngblood: 10,
-	Scalawag: 15,
-	Greenhorn: 20,
+	
+	Scalawag: 10,
+	Youngblood: 15,
+	Tenderfoot: 20,
 	Rookie: 25,
 	Apprentice: 30,
 	Novice: 35,
+	Learner: 40,
 
 }
 
