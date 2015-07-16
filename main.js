@@ -14,6 +14,13 @@ $("body").on("click", ".addMediaButton", function(){
 })
 
 
+
+$("body").on("click", ".asText", function() {
+	var nameForm = $("<input type='text' class='form-control nameForm' placeholder='Name'>")
+	$(".asText").remove()
+	$(".profileImageDiv").append(nameForm)
+})
+
 // Arrays for data structures. 
 
 var levelsObject = { // ideally I'd like to have one value per level rating(key) but since level change is strictly set to === I cannot work with ranges in levelChanger function below

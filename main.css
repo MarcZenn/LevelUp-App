@@ -80,7 +80,7 @@ body {
 	border-radius: 5px;
 }
 
-.astext {
+.asText {
 	background:none;
     border:none; 
     width: 100%;
@@ -91,6 +91,10 @@ body {
 	padding-top: 5px; 
 }
 
+.nameForm {
+	margin-top: 10px;
+	
+}
 
 
 .profileNameText {
