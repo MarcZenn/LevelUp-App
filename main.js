@@ -17,7 +17,7 @@ $("body").on("click", ".addMediaButton", function(){
 // Arrays for data structures. 
 
 var levelsObject = { // ideally I'd like to have one value per level rating(key) but since level change is strictly set to === I cannot work with ranges in levelChanger function below
-	Whippersnapper: 10,
+	Youngblood: 10,
 	Scalawag: 15,
 	Greenhorn: 20,
 	Rookie: 25,
@@ -25,7 +25,6 @@ var levelsObject = { // ideally I'd like to have one value per level rating(key)
 	Novice: 35,
 
 }
-
 
 
 
@@ -182,6 +181,7 @@ $(document).on("click", ".propsButtonContainer", function() {
 				var appenditure = $("<p class='levelTitle'>" + prop + "</p>")
 				$(".levelTitle").remove()
 				$(".currentLevel").append(appenditure)
+				alert("You've Leveled Up!")
 			}
 				
 		}
@@ -236,12 +236,13 @@ $(document).on("click", ".madPropsButtonContainer", function() {
 				var appenditure = $("<p class='levelTitle'>" + prop + "</p>")
 				$(".levelTitle").remove()
 				$(".currentLevel").append(appenditure)
+				alert("You've Leveled Up!")
 			}
 				
 		}
 	}
 
-		console.log( levelChanger() ) // when I console.log this function it says it's undefined...WHY???!!!!
+		levelChanger() // when I console.log this function it says it's undefined...WHY???!!!!
 
 })
 
