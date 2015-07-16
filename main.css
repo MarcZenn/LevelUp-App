@@ -46,10 +46,12 @@ body {
 	margin: 10px;
 	text-align: center;
 	width: 100%;
+	line-height: 800px;
+	height: 1000px;
 }
 
 
-.topTopDiv img {
+.topTopDiv input {
 	width: 40%;
 	margin: 55px;
 }
