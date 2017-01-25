@@ -1,6 +1,7 @@
 // import React
-import {Component} from 'react';
-import {Link} from 'react-router';
+import React, {Component} from 'react';
+
+// components
 import Feed from './feed/feed.jsx';
 
 
@@ -9,7 +10,7 @@ class Home extends Component {
     return (
       <section className='home-content'>
         <h1>Putting Donald Trump in the Oval Office is Like....</h1>
-        <Feed/>
+        <Feed />
       </section>
     )
   }
@@ -17,7 +18,7 @@ class Home extends Component {
 
 
 Home.propTypes = {
-  //....
+
 }
 
 

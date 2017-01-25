@@ -1,9 +1,16 @@
 // import React
-import {Component} from 'react';
-import {Link} from 'react-router';
+import React, {Component} from 'react';
 
-
+// Notice we're using 'refs' which is far less verbose than using state here.
 class FeedUpload extends Component {
+  onSubmit(e) {
+    // call parent component (Feed) state func then clear val.
+    e.preventDefault();
+    const node = this.refs.analogy;
+    const trumpnalogy = node.value;
+    this.props.addAnalogy(trumpnalogy);
+    node.value = '';
+  }
   render() {
     return (
       <section>
@@ -14,20 +21,12 @@ class FeedUpload extends Component {
       </section>
     )
   }
-  onSubmit() {
-    const node = this.refs.analogy;
-    const trumpnalogy = node.value;
-    this.props.addAnalogy(trumpnalogy);
-    node.value = '';
-  }
-  addAnalogy() {
-    
-  }
 }
 
 
 FeedUpload.propTypes = {
   addAnalogy: React.PropTypes.func.isRequired
+  // add ability to parse post and make sure its nothing super offensive
 }
 
 
